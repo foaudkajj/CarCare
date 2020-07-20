@@ -11,8 +11,8 @@ namespace CarCare.Application.Services
     {
         Task<TDto> GetEntity(int Id);
         LoadResult GetEntities(DataSourceLoadOptions loadOptions);
-        Task<TDto> PutEntity(int id, TDto entityDto);
-        Task<TDto[]> PostEntities(TDto[] entitiesDto);
+        Task<TDto> PutEntity(int id, string values);
+        Task<TDto[]> PostEntities(string values);
         Task<TDto> PostEntity(TDto entityDto);
         Task<TDto> DeleteEntity(int id);
         Task<TDto> FindEntity(int id);

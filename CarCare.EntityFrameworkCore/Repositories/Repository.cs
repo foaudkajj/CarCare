@@ -1,5 +1,6 @@
 ﻿using CarCare.Core.IRepositories;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +36,10 @@ namespace CarCare.EntityFrameworkCore.Repositories
             return await _context.FindAsync<T>(id);
         }
 
-        public async Task<T[]> PostEntities(T[] Entities)
+        public async Task<List<T>> PostEntities(string values)
         {
+            List<T> Entities = new List<T>();
+            JsonConvert.PopulateObject(values, Entities);
             _context.AddRange(Entities);
             await _context.SaveChangesAsync();
 
@@ -51,8 +54,10 @@ namespace CarCare.EntityFrameworkCore.Repositories
             return Entity;
         }
 
-        public async Task<T> PutEntity(int id, T Entity)
+        public async Task<T> PutEntity(int id, string values)
         {
+            var Entity = await _context.FindAsync<T>(id);
+            JsonConvert.PopulateObject(values, Entity);
             _context.Entry(Entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
