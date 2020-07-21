@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using AutoMapper;
+using CarCare.Application.Services.CarMaintainceService;
 using CarCare.Application.Services.CarService;
 using CarCare.Core.IRepositories;
 using CarCare.EntityFrameworkCore;
@@ -41,16 +42,41 @@ namespace CarCare
                        .AllowAnyHeader();
             }));
 
-            services.AddAutoMapper(typeof(Application.Services.CarService.AutoMapperProfiles.CarProfile).GetTypeInfo().Assembly);
+            services.AddAutoMapper(typeof(Application.Services.CarService.CarProfiles.CarProfile).GetTypeInfo().Assembly);
 
             services.AddControllers();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+                {
+                    Version = "1.0.0",
+                    Title = "API Documentation",
+                    Description = "Services for Backend",
+                    //TermsOfService = new Uri("https://www.procenne.com/Emv&Payment")
+                });
+                //c.AddSecurityDefinition("Bearer",
+                //    new ApiKeyScheme
+                //    {
+                //        In = "header",
+                //        Description = "Please enter into field the word 'Bearer' following by space and JWT",
+                //        Name = "Authorization",
+                //        Type = "apiKey"
+                //    });
+                //c.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
+                //{
+                //    { "Bearer", Enumerable.Empty<string>() },
+                //});
+            });
         }
 
         private static void ConfigureIoC(IServiceCollection services)
         {
             services.AddTransient<ICarRepository, CarRepository>();
             services.AddTransient<ICarService, CarService>();
-
+            services.AddTransient<ICarMaintainceRepository, CarMaintainceRepository>();
+            services.AddTransient<ICarMaintainceService, CarMaintainceService>();
+            
 
 
             services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
@@ -63,6 +89,12 @@ namespace CarCare
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json","Swagger");
+                    c.RoutePrefix = "";
+                });
             }
 
             app.UseHttpsRedirection();
