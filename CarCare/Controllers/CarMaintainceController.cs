@@ -19,34 +19,30 @@ namespace CarCare.Controllers
             this.carMaintainceService = carMaintainceService;
         }
 
-        // GET: api/Car
         [HttpGet]
-        public ActionResult GetCars(DataSourceLoadOptions loadOptions)
+        public ActionResult GetCarMaintainces(DataSourceLoadOptions loadOptions)
         {
             var result = carMaintainceService.GetEntities(loadOptions);
             return Ok(result);
         }
 
-        // PUT: api/Car/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCar([FromForm] int key, [FromForm] string values)
+        public async Task<IActionResult> PutCarMaintaince([FromForm] int key, [FromForm] string values)
         {
             var puttedBranch = await carMaintainceService.PutEntity(key, values);
 
             return Ok(puttedBranch);
         }
 
-        // POST: api/Car
         [HttpPost]
-        public async Task<ActionResult<CarMaintainceDto>> PostCars([FromForm] string values)
+        public async Task<ActionResult<CarMaintainceDto>> PostCarMaintainces([FromForm] string values)
         {
             await carMaintainceService.PostEntities(values);
             return Ok();
         }
 
-        // DELETE: api/Cars/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<CarMaintainceDto>> DeleteCar(int id)
+        public async Task<ActionResult<CarMaintainceDto>> DeleteCarMaintaince(int id)
         {
             var color = await carMaintainceService.DeleteEntity(id);
             if (color == null)

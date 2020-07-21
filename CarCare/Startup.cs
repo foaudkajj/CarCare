@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using AutoMapper;
 using CarCare.Application.Services.CarMaintainceService;
+using CarCare.Application.Services.CarModelService;
 using CarCare.Application.Services.CarService;
 using CarCare.Core.IRepositories;
 using CarCare.EntityFrameworkCore;
@@ -76,6 +77,8 @@ namespace CarCare
             services.AddTransient<ICarService, CarService>();
             services.AddTransient<ICarMaintainceRepository, CarMaintainceRepository>();
             services.AddTransient<ICarMaintainceService, CarMaintainceService>();
+            services.AddTransient<ICarModelRepository, CarModelRepository>();
+            services.AddTransient<ICarModelService, CarModelService>();
             
 
 
