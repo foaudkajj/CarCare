@@ -80,6 +80,8 @@ namespace CarCare
             services.AddTransient<ICarModelService, CarModelService>();
             services.AddTransient<ICarOwnerRepository, CarOwnerRepository>();
             services.AddTransient<ICarOwnerService, CarOwnerService>();
+            services.AddTransient<IMaintainceCategoryService, MaintainceCategoryService>();
+            services.AddTransient<IMaintainceCategoryRepository, MaintainceCategoryRepository>();
             
 
 
