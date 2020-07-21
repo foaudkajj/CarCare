@@ -5,11 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarCare.Application.Services.CarService.AutoMapperProfiles
+namespace CarCare.Application.Services.CarService.CarProfiles
 {
-    public class ToCarProfile : Profile
+    public class CarProfileDto : Profile
     {
-        public ToCarProfile()
+        public CarProfileDto()
         {
             CreateMap<CarDto, Car>();
         }
