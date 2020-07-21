@@ -82,6 +82,8 @@ namespace CarCare
             services.AddTransient<ICarOwnerService, CarOwnerService>();
             services.AddTransient<IMaintainceCategoryService, MaintainceCategoryService>();
             services.AddTransient<IMaintainceCategoryRepository, MaintainceCategoryRepository>();
+            services.AddTransient<IMaintainceSubCategoryRepository, MaintainceSubCategoryRepository>();
+            services.AddTransient<IMaintainceSubCategoryService, MaintainceSubCategoryService>();
             
 
 

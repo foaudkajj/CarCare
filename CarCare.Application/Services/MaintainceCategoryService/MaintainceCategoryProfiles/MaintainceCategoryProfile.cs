@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarCare.Application.Services.MaintainceCategoryProfiles
+namespace CarCare.Application.Services
 {
     public class MaintainceCategoryProfile: Profile
     {
