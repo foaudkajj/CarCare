@@ -5,13 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarCare.Application.Services.CarModelProfiles
+namespace CarCare.Application.Services.CarOwnerProfiles
 {
-    public class CarModelProfile: Profile
+    public class CarOwnerProfile:Profile
     {
-        public CarModelProfile()
+        public CarOwnerProfile()
         {
-            CreateMap<CarModel, CarModelDto>();
+            CreateMap<CarOwner, CarOwnerDto>();
         }
     }
 }

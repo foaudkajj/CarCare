@@ -1,5 +1,4 @@
-﻿
-using CarCare.Application.Services;
+﻿using CarCare.Application.Services;
 using CarCare.Application.Services.Dtos;
 using CarCare.Shared;
 using Microsoft.AspNetCore.Mvc;
@@ -12,40 +11,40 @@ namespace CarCare.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarMaintainceController : ControllerBase
+    public class CarOwnerController : ControllerBase
     {
-        private readonly ICarMaintainceService carMaintainceService;
-        public CarMaintainceController(ICarMaintainceService carMaintainceService)
+        private readonly ICarOwnerService carOwnerService;
+        public CarOwnerController(ICarOwnerService carOwnerService)
         {
-            this.carMaintainceService = carMaintainceService;
+            this.carOwnerService = carOwnerService;
         }
 
         [HttpGet]
         public ActionResult GetCarMaintainces(DataSourceLoadOptions loadOptions)
         {
-            var result = carMaintainceService.GetEntities(loadOptions);
+            var result = carOwnerService.GetEntities(loadOptions);
             return Ok(result);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCarMaintaince([FromForm] int key, [FromForm] string values)
         {
-            var puttedBranch = await carMaintainceService.PutEntity(key, values);
+            var puttedBranch = await carOwnerService.PutEntity(key, values);
 
             return Ok(puttedBranch);
         }
 
         [HttpPost]
-        public async Task<ActionResult<CarMaintainceDto>> PostCarMaintainces([FromForm] string values)
+        public async Task<ActionResult<CarOwnerDto>> PostCarMaintainces([FromForm] string values)
         {
-            await carMaintainceService.PostEntities(values);
+            await carOwnerService.PostEntities(values);
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<CarMaintainceDto>> DeleteCarMaintaince(int id)
+        public async Task<ActionResult<CarOwnerDto>> DeleteCarMaintaince(int id)
         {
-            var color = await carMaintainceService.DeleteEntity(id);
+            var color = await carOwnerService.DeleteEntity(id);
             if (color == null)
             {
                 return NotFound();

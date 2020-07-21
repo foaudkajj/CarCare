@@ -1,5 +1,5 @@
-﻿using CarCare.Application.Services.CarModelService;
-using CarCare.Application.Services.CarModelService.Dtos;
+﻿using CarCare.Application.Services;
+using CarCare.Application.Services.Dtos;
 using CarCare.Shared;
 using Microsoft.AspNetCore.Mvc;
 using System;

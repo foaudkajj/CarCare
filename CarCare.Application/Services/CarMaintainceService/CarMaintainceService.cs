@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using CarCare.Application.Services.CarMaintainceService.Dtos;
 using CarCare.Application.Services.CarService;
+using CarCare.Application.Services.Dtos;
 using CarCare.Core.IRepositories;
 using CarCare.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarCare.Application.Services.CarMaintainceService
+namespace CarCare.Application.Services
 {
     public class CarMaintainceService : Service<CarMaintaince, CarMaintainceDto>, ICarMaintainceService
     {

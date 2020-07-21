@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CarCare.Application.Services
 {
-    public interface ICarModelService : IService<CarModel, CarModelDto>
+    public interface ICarOwnerService : IService<CarOwner, CarOwnerDto>
     {
     }
 }

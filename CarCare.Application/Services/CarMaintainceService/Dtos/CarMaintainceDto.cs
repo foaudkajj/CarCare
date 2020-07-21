@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CarCare.Application.Services.CarMaintainceService.Dtos
+namespace CarCare.Application.Services.Dtos
 {
     public class CarMaintainceDto
     {
